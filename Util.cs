@@ -13,5 +13,10 @@ namespace CatWorx.BadgeMaker
                 Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
             }
         }
+
+        public static void MakeCSV(List<Employee> employees)
+        {
+            
+        }
     }
 }
