@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker
@@ -16,7 +17,10 @@ namespace CatWorx.BadgeMaker
 
         public static void MakeCSV(List<Employee> employees)
         {
-            
+            if (!Directory.Exists("data"))
+            {
+                Directory.CreateDirectory("data");
+            }
         }
     }
 }
