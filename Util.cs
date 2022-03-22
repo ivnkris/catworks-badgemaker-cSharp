@@ -86,6 +86,9 @@ namespace CatWorx.BadgeMaker
                     graphic.DrawImage(photo, new Rectangle(PHOTO_START_X, PHOTO_START_Y, PHOTO_WIDTH, PHOTO_HEIGHT));
                     // Add company name
                     graphic.DrawString(employees[i].GetCompanyName(), font, new SolidBrush(Color.White), new Rectangle(COMPANY_NAME_START_X, COMPANY_NAME_START_Y, BADGE_WIDTH, COMPANY_NAME_WIDTH), format);
+                    // Add employee name
+                    graphic.DrawString(employees[i].GetName(), font, brush, new Rectangle(EMPLOYEE_NAME_START_X, EMPLOYEE_NAME_START_Y, BADGE_WIDTH, EMPLOYEE_NAME_HEIGHT), format);
+                    
                 }
             }
         }
