@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Net;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -59,8 +60,24 @@ namespace CatWorx.BadgeMaker
             int EMPLOYEE_ID_WIDTH = BADGE_WIDTH;
             int EMPLOYEE_ID_HEIGHT = 100;
 
-            Image newImage = Image.FromFile("badge.png");
-            newImage.Save("data/employeeBadge.png");
+            using(WebClient client = new WebClient())
+            {
+                for (int i = 0; i < employees.Count; i++)
+                {
+                    // Get employee photo from URL
+                    Image photo = Image.FromStream(client.OpenRead(employees[i].GetPhotoUrl()));
+
+                    // Get background from template
+                    Image background = Image.FromFile("badge.png");
+
+                    // Create badge Graphics object
+                    Image badge = new Bitmap(BADGE_WIDTH, BADGE_HEIGHT);
+                    Graphics graphic = Graphics.FromImage(badge);
+                    // Draw background and employee photo onto Graphics object
+                    graphic.DrawImage(background, new Rectangle(0, 0, BADGE_WIDTH, BADGE_HEIGHT));
+                    graphic.DrawImage(photo, new Rectangle(PHOTO_START_X, PHOTO_START_Y, PHOTO_WIDTH, PHOTO_HEIGHT));
+                }
+            }
         }
     }
 }
