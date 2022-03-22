@@ -60,6 +60,14 @@ namespace CatWorx.BadgeMaker
             int EMPLOYEE_ID_WIDTH = BADGE_WIDTH;
             int EMPLOYEE_ID_HEIGHT = 100;
 
+            // Graphics objects
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;
+            int FONT_SIZE = 32;
+            Font font = new Font("Courier New", FONT_SIZE);
+
+            SolidBrush brush = new SolidBrush(Color.Black);
+
             using(WebClient client = new WebClient())
             {
                 for (int i = 0; i < employees.Count; i++)
@@ -76,6 +84,8 @@ namespace CatWorx.BadgeMaker
                     // Draw background and employee photo onto Graphics object
                     graphic.DrawImage(background, new Rectangle(0, 0, BADGE_WIDTH, BADGE_HEIGHT));
                     graphic.DrawImage(photo, new Rectangle(PHOTO_START_X, PHOTO_START_Y, PHOTO_WIDTH, PHOTO_HEIGHT));
+                    // Add company name
+                    graphic.DrawString(employees[i].GetCompanyName(), font, new SolidBrush(Color.White), new Rectangle(COMPANY_NAME_START_X, COMPANY_NAME_START_Y, BADGE_WIDTH, COMPANY_NAME_WIDTH), format);
                 }
             }
         }
