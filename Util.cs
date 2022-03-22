@@ -64,7 +64,8 @@ namespace CatWorx.BadgeMaker
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
             int FONT_SIZE = 32;
-            Font font = new Font("Courier New", FONT_SIZE);
+            Font font = new Font("Arial", FONT_SIZE);
+            Font monoFont = new Font("Courier New", FONT_SIZE);
 
             SolidBrush brush = new SolidBrush(Color.Black);
 
@@ -88,7 +89,11 @@ namespace CatWorx.BadgeMaker
                     graphic.DrawString(employees[i].GetCompanyName(), font, new SolidBrush(Color.White), new Rectangle(COMPANY_NAME_START_X, COMPANY_NAME_START_Y, BADGE_WIDTH, COMPANY_NAME_WIDTH), format);
                     // Add employee name
                     graphic.DrawString(employees[i].GetName(), font, brush, new Rectangle(EMPLOYEE_NAME_START_X, EMPLOYEE_NAME_START_Y, BADGE_WIDTH, EMPLOYEE_NAME_HEIGHT), format);
-                    
+                    // Add employee ID
+                    graphic.DrawString(employees[i].GetId().ToString(), monoFont, brush, new Rectangle(EMPLOYEE_ID_START_X, EMPLOYEE_ID_START_Y, EMPLOYEE_ID_WIDTH, EMPLOYEE_ID_HEIGHT), format);
+                    // Save badge
+                    string template = "data/{0}_badge.png";
+                    badge.Save(string.Format(template, employees[i].GetId()));
                 }
             }
         }
