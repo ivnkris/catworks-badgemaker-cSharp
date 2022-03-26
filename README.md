@@ -23,7 +23,7 @@ https://github.com/ivnkris/catworks-badgemaker-c-
 
 ## Screenshots
 
-![Screenshot 1 - CLI](./screenshots/screenshot-1.png)
+![Screenshot 1 - CLI](./screenshots/screenshot-1.PNG)
 ![Screenshot 2 - Badge made using own data](./screenshots/screenshot-2.png)
 ![Screenshot 3 - Badge made using own data](./screenshots/screenshot-3.png)
 ![Screenshot 4 - Badge made using API](./screenshots/screenshot-4.png)
