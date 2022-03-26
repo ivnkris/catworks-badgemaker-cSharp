@@ -6,12 +6,26 @@ namespace CatWorx.BadgeMaker
     class Program
     {
         static void Main(string[] args)
-        {
-            // List<Employee> employees = GetEmployees();
-            List<Employee> employees = PeopleFetcher.GetFromApi();
-            Util.PrintEmployees(employees);
-            Util.MakeCSV(employees);
-            Util.MakeBadges(employees);
+        {   
+            Console.WriteLine("Type 'data' to use your own data or 'api' to fetch data from API: ");
+            string choice = Console.ReadLine();
+            if (choice == "data")
+            {
+                List<Employee> employees = GetEmployees();
+                Util.PrintEmployees(employees);
+                Util.MakeCSV(employees);
+                Util.MakeBadges(employees);
+            } else if (choice == "api")
+            {
+                List<Employee> employees = PeopleFetcher.GetFromApi();
+                Util.PrintEmployees(employees);
+                Util.MakeCSV(employees);
+                Util.MakeBadges(employees);
+            } else
+            {
+                Console.WriteLine("You must choose either 'data' or 'api'");
+            }
+            
         }
 
         static List<Employee> GetEmployees()
@@ -26,11 +40,11 @@ namespace CatWorx.BadgeMaker
                     break;
                 }
 
-                Console.Write("Enter last name: ");
+                Console.WriteLine("Enter last name: ");
                 string lastName = Console.ReadLine();
-                Console.Write("Enter ID: ");
+                Console.WriteLine("Enter ID: ");
                 int id = Int32.Parse(Console.ReadLine());
-                Console.Write("Enter Photo URL: ");
+                Console.WriteLine("Enter Photo URL: ");
                 string photoUrl = Console.ReadLine();
 
                 Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl);
