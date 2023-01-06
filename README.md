@@ -19,7 +19,7 @@ Submit a pull request
 
 ## Link to GitHub repository
 
-https://github.com/ivnkris/catworks-badgemaker-c-
+https://github.com/ivnkris/catworks-badgemaker-cSharp
 
 ## Screenshots
 
